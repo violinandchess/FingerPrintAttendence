@@ -59,7 +59,7 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btnStudentAffairs.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        btnStudentAffairs.setText("Student Affairs");
+        btnStudentAffairs.setText("Add Students");
         btnStudentAffairs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStudentAffairsActionPerformed(evt);
