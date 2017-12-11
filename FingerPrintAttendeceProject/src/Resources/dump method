@@ -1,0 +1,80 @@
+
+//    private static void GenarateWeeklyAttendenceFromRAW(StoredAttendenceFile file) {
+//        System.out.println("File name " + file.getFileName());
+//        System.out.println("File Path " + file.getFilePath());
+//
+//        List<String> readbuffer = new ArrayList<>();
+//        String readfilefullpath = file.getFilePath() + file.getFileName();
+//
+//        File readFile = new File(readfilefullpath);
+//
+//        try (Stream<String> stream = Files.lines(readFile.toPath())) {
+//
+//            readbuffer = stream.collect(Collectors.toList());
+//        } catch (IOException exception) {
+//            System.out.println("File not found");
+//        }
+//
+//        WeeklyAttendenceService weeklyattendence = new WeeklyAttendenceService();
+//        StoredAttendenceFile[] lastprocessedfile = weeklyattendence.GetWeeklyFiles(true);
+//        WeeklyAttendence[] filterdData = new WeeklyAttendence[readbuffer.size()];
+//        int i = 0;
+//        Date updatednextprocess = new Date();
+//        for (String record : readbuffer) {
+//            String recordArray[] = record.split(" ");
+//            //System.out.println("recordArray[0]" + recordArray[0]);
+//
+//            WeeklyAttendence tempFillData = new WeeklyAttendence();
+//
+//            String datetimestring = recordArray[1];
+//            Date readDate = new Date();
+//            SimpleDateFormat fulldateformat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss a");
+//            SimpleDateFormat dateonly = new SimpleDateFormat("dd/MM/yyyy");
+//            String time = "";
+//            try {
+//                readDate = fulldateformat.parse(datetimestring);
+//                SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss a");
+//                time = localDateFormat.format(readDate);
+//
+//                //System.out.println("date : " + simpleDateFormat.format(date));
+//            } catch (ParseException ex) {
+//                System.out.println("Exception " + ex);
+//            }
+//            tempFillData.setDeviceID(recordArray[0]);
+//            tempFillData.setWeekDate(dateonly.format(readDate));
+//            tempFillData.setWeekTime(time);
+//
+//            if (lastprocessedfile[0].getNextProcessDate() == null) {
+//                filterdData[i] = tempFillData;
+//
+//            } else {
+//                try {
+//                    SimpleDateFormat dateonly2 = new SimpleDateFormat("yyyy-MM-dd");
+//                    String output = lastprocessedfile[0].getNextProcessDate().substring(0, 10);
+//                    Date nextprocessd = dateonly2.parse(output);
+//
+//                    if (readDate.compareTo(nextprocessd) >= 0) {
+//                        filterdData[i] = tempFillData;
+//
+//                    }
+//
+//                } catch (ParseException ex) {
+//                    System.out.println("Exception " + ex);
+//                }
+//            }
+//            i++;
+//
+//        }
+//        try {
+//            SimpleDateFormat dateonly = new SimpleDateFormat("yyyy-mm-dd");
+//            updatednextprocess = dateonly.parse(file.getWeekEndDate());
+//            Calendar c = Calendar.getInstance();
+//            c.setTime(updatednextprocess);
+//            c.add(Calendar.DATE, 1);
+//            AddWeeklyAttendence(filterdData, dateonly.format(c.getTime()), file.getID());
+//
+//        } catch (ParseException ex) {
+//            System.out.println("Exception 3 " + ex);
+//        }
+//
+//    }
