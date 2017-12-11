@@ -20,6 +20,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ManageUser extends javax.swing.JFrame {
 
+    public static String UserType = "";
+
     /**
      * Creates new form ManageUser
      */

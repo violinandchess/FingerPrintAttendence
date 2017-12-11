@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package FrontEndUI;
+
 import java.util.logging.Logger;
 
 import Models.Student;
@@ -21,13 +22,16 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+
 /**
  *
  * @author Vibavi
  */
 public class EnrollStudent extends javax.swing.JFrame {
 
-     private static final Logger LOGGER = Logger.getLogger(EnrollStudent.class.getName());
+    public static String UserType = "";
+    private static final Logger LOGGER = Logger.getLogger(EnrollStudent.class.getName());
+
     /**
      * Creates new form EnrollStudent
      */
@@ -215,7 +219,7 @@ public class EnrollStudent extends javax.swing.JFrame {
                         studentAffirsService.RegisterStudent(student, txtSubjectCode.getText());
                     }
                 }
-            
+
             } catch (Exception ioe) {
                 ioe.printStackTrace();
             }

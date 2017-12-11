@@ -24,12 +24,12 @@ public class Login extends javax.swing.JFrame {
     private ImageIcon img = new ImageIcon("D:\\FingerPrintAttendence\\FingerPrintAttendence\\FingerPrintAttendeceProject\\src\\Resources\\attendance-icon.png");
 
     public Login() {
-        
+
         System.out.println(getClass().getClassLoader().getResource("logging.properties"));
         this.loginSerivice = new LoginService();
 
         initComponents();
-     
+
         this.setLocationRelativeTo(null);
     }
 
@@ -140,14 +140,30 @@ public class Login extends javax.swing.JFrame {
 
                 User user = loginSerivice.ValidateUser(txtUserName.getText(), passString);
                 if (user != null) {
-                    if (user.getType().equals("floor_assistant")) {
+                    if (user.getType().equals("Floor Assistant")) {
                         FloorAssistantUI floorAssitantGUI = new FloorAssistantUI();
                         floorAssitantGUI.setVisible(true);
+                        FloorAssistantUI.UserType = user.getType();
                         this.dispose();
 
-                    } else if (user.getType().equals("admin")) {
+                    } else if (user.getType().equals("Admin")) {
 
                         Admin adminGUI = new Admin();
+
+                        adminGUI.setVisible(true);
+                        this.dispose();
+
+                    } else if (user.getType().equals("Student Affairs")) {
+
+                        Student_Affairs_UI adminGUI = new Student_Affairs_UI();
+                        Student_Affairs_UI.UserType = user.getType();
+                        adminGUI.setVisible(true);
+                        this.dispose();
+
+                    } else if (user.getType().equals("Lecturer")) {
+
+                        AdminSessions adminGUI = new AdminSessions();
+                        AdminSessions.UserType = user.getType();
                         adminGUI.setVisible(true);
                         this.dispose();
 
@@ -204,9 +220,9 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-              
+
                 new Login().setVisible(true);
-               
+
             }
         });
     }

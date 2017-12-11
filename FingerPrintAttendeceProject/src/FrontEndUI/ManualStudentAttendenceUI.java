@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class ManualStudentAttendenceUI extends javax.swing.JFrame {
 
+    public static String UserType = "";
+
     /**
      * Creates new form ManualStudentAttendenceService
      */

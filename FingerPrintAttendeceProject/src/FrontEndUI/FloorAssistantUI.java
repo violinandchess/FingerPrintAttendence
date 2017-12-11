@@ -30,6 +30,7 @@ public class FloorAssistantUI extends javax.swing.JFrame implements PropertyChan
     private ImageIcon img = new ImageIcon("D:\\FingerPrintAttendence\\FingerPrintAttendence\\FingerPrintAttendeceProject\\src\\Resources\\attendance-icon.png");
     private static final Logger LOGGER = Logger.getLogger(FloorAssistantUI.class.getName());
     private StoredAttendenceFileService storedfileService = new StoredAttendenceFileService();
+    public static String UserType = "";
 
     /**
      * Creates new form FloorAssistantUI
@@ -44,7 +45,7 @@ public class FloorAssistantUI extends javax.swing.JFrame implements PropertyChan
         uploadprogrss.setVisible(false);
 
     }
-    
+
     public String check_monday() {
 
         if (txtAddingDateStart.getDate() != null) {
@@ -261,75 +262,75 @@ public class FloorAssistantUI extends javax.swing.JFrame implements PropertyChan
         System.out.println("" + a);
 
         if (a && check == "monday" && check1 == "sunday") {
-        if (!txtUpload.getText().isEmpty()) {
-            if (txtAddingDateEnd.getDate() != null) {
-                String startingDate, endingDate;
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                startingDate = df.format(txtAddingDateStart.getDate());
-                endingDate = df.format(txtAddingDateEnd.getDate());
-                Calendar cal = Calendar.getInstance();
-                cal.setTime(txtAddingDateStart.getDate());
-                boolean monday = cal.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY;
-                cal.setTime(txtAddingDateEnd.getDate());
-                boolean sunday = cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
-                if (txtAddingDateStart.getDate().compareTo(txtAddingDateEnd.getDate()) > 0) {
-                    JOptionPane.showMessageDialog(null, "Starting date is Greater than Ending Date", "Date Error",
-                            JOptionPane.ERROR_MESSAGE);
-
-                } else if (!monday) {
-                    JOptionPane.showMessageDialog(null, "Starting date is not a Monday date", "Date Error",
-                            JOptionPane.ERROR_MESSAGE);
-                } else if (!sunday) {
-                    JOptionPane.showMessageDialog(null, "Ending date is not a Sunday date", "Date Error",
-                            JOptionPane.ERROR_MESSAGE);
-                } else {
-
-                    boolean isMultipleUpload = storedfileService.CheckMultipleFiles(startingDate, endingDate);
-                    if (isMultipleUpload) {
-                        JOptionPane.showMessageDialog(null, "File Has Already Uploaded for this Week", "Already Uploaded",
+            if (!txtUpload.getText().isEmpty()) {
+                if (txtAddingDateEnd.getDate() != null) {
+                    String startingDate, endingDate;
+                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                    startingDate = df.format(txtAddingDateStart.getDate());
+                    endingDate = df.format(txtAddingDateEnd.getDate());
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(txtAddingDateStart.getDate());
+                    boolean monday = cal.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY;
+                    cal.setTime(txtAddingDateEnd.getDate());
+                    boolean sunday = cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
+                    if (txtAddingDateStart.getDate().compareTo(txtAddingDateEnd.getDate()) > 0) {
+                        JOptionPane.showMessageDialog(null, "Starting date is Greater than Ending Date", "Date Error",
                                 JOptionPane.ERROR_MESSAGE);
 
-                        fileexisterror.setVisible(true);
-
+                    } else if (!monday) {
+                        JOptionPane.showMessageDialog(null, "Starting date is not a Monday date", "Date Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    } else if (!sunday) {
+                        JOptionPane.showMessageDialog(null, "Ending date is not a Sunday date", "Date Error",
+                                JOptionPane.ERROR_MESSAGE);
                     } else {
-                        fileexisterror.setVisible(false);
-                        fileexisterror.setVisible(false);
 
-                        uploadprogrss.setVisible(true);
+                        boolean isMultipleUpload = storedfileService.CheckMultipleFiles(startingDate, endingDate);
+                        if (isMultipleUpload) {
+                            JOptionPane.showMessageDialog(null, "File Has Already Uploaded for this Week", "Already Uploaded",
+                                    JOptionPane.ERROR_MESSAGE);
 
-                        ///Upload file
-                        String host = "172.18.20.210";
-                        int port = 21;
-                        String username = "ftpattend";
-                        String password = "Admin@123";
-                        String uploadPath = "AttendenceFiles";
-                        String filePath = "\\home\\ftpattend\\";
+                            fileexisterror.setVisible(true);
 
-                        File uploadFile = new File(txtUpload.getText());
+                        } else {
+                            fileexisterror.setVisible(false);
+                            fileexisterror.setVisible(false);
 
-                        uploadprogrss.setValue(0);
-                        UploadTask task = new UploadTask(host, port, username, password,
-                                uploadPath, uploadFile, startingDate, endingDate);
-                        task.addPropertyChangeListener(this);
-                        task.execute();
+                            uploadprogrss.setVisible(true);
+
+                            ///Upload file
+                            String host = "172.18.20.210";
+                            int port = 21;
+                            String username = "ftpattend";
+                            String password = "Admin@123";
+                            String uploadPath = "AttendenceFiles";
+                            String filePath = "\\home\\ftpattend\\";
+
+                            File uploadFile = new File(txtUpload.getText());
+
+                            uploadprogrss.setValue(0);
+                            UploadTask task = new UploadTask(host, port, username, password,
+                                    uploadPath, uploadFile, startingDate, endingDate);
+                            task.addPropertyChangeListener(this);
+                            task.execute();
+                        }
                     }
-                }
 
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please  Select a Date", "Select a Date",
+                            JOptionPane.ERROR_MESSAGE);
+
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Please  Select a Date", "Select a Date",
+
+                JOptionPane.showMessageDialog(null, "Please  Select csv File by Clicking Browse button", "Select a File",
                         JOptionPane.ERROR_MESSAGE);
 
             }
         } else {
-
-            JOptionPane.showMessageDialog(null, "Please  Select csv File by Clicking Browse button", "Select a File",
-                    JOptionPane.ERROR_MESSAGE);
-
-        }
-        }else{
             JOptionPane.showMessageDialog(null, "Form Fields Error ", "Error", JOptionPane.ERROR_MESSAGE);
             LOGGER.log(Level.INFO, "Form_Fields_Exception", "Floor_Assistant");
-        
+
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
@@ -370,9 +371,9 @@ public class FloorAssistantUI extends javax.swing.JFrame implements PropertyChan
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      Login s=new Login();
-      s.setVisible(true);
-      this.dispose();
+        Login s = new Login();
+        s.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

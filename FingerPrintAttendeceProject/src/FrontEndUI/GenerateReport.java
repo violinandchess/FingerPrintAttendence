@@ -33,6 +33,8 @@ import javax.swing.JOptionPane;
  */
 public class GenerateReport extends javax.swing.JFrame {
 
+    public static String UserType = "";
+
     /**
      * Creates new form GenerateReport
      */

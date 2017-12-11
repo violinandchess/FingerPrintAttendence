@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class HolidayManage extends javax.swing.JFrame {
 
+    public static String UserType = "";
+
     /**
      * Creates new form HolidayManage
      */

@@ -48,7 +48,7 @@ public class Admin extends javax.swing.JFrame {
         setIconImage(img.getImage());
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(176, 222, 255));
 
         btnFloorAssistant.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnFloorAssistant.setText("Floor Assistant ");
@@ -178,7 +178,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFloorAssistantActionPerformed
 
     private void btnStudentAffairsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentAffairsActionPerformed
-        Student_Affairs_UI studentaffairsGUI = new Student_Affairs_UI();
+        Add_Students studentaffairsGUI = new Add_Students();
         studentaffairsGUI.setVisible(true);
         this.dispose();
 
