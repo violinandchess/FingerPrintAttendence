@@ -149,7 +149,9 @@ public class Login extends javax.swing.JFrame {
                     } else if (user.getType().equals("Admin")) {
 
                         Admin adminGUI = new Admin();
-
+                        AdminSessions.UserType = user.getType();
+                        Student_Affairs_UI.UserType = user.getType();
+                        FloorAssistantUI.UserType = user.getType();
                         adminGUI.setVisible(true);
                         this.dispose();
 
