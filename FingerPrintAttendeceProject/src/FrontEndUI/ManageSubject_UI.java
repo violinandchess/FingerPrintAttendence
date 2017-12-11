@@ -5,6 +5,7 @@
  */
 package FrontEndUI;
 
+import static FrontEndUI.AdminSessions.UserType;
 import Models.Subject;
 import ServiceLayer.SubjectService;
 import java.text.SimpleDateFormat;
@@ -99,6 +100,11 @@ public class ManageSubject_UI extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton4.setText("Back");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -227,6 +233,19 @@ public class ManageSubject_UI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (UserType.equals("Admin")) {
+            Admin admin = new Admin();
+            admin.setVisible(true);
+            this.dispose();
+        }
+        if (UserType.equals("Lecturer")) {
+            Login admin = new Login();
+            admin.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

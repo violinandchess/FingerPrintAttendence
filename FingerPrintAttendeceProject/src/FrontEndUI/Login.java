@@ -150,8 +150,14 @@ public class Login extends javax.swing.JFrame {
 
                         Admin adminGUI = new Admin();
                         AdminSessions.UserType = user.getType();
+                        ManageSubject_UI.UserType = user.getType();
                         Student_Affairs_UI.UserType = user.getType();
+                        EnrollStudent.UserType = user.getType();
                         FloorAssistantUI.UserType = user.getType();
+                        Add_Students.UserType = user.getType();
+                        ManageUser.UserType = user.getType();
+                        GenerateReport.UserType = user.getType();
+                        ManualStudentAttendenceUI.UserType=user.getType();
                         adminGUI.setVisible(true);
                         this.dispose();
 
@@ -159,10 +165,10 @@ public class Login extends javax.swing.JFrame {
 
                         Student_Affairs_UI adminGUI = new Student_Affairs_UI();
                         Student_Affairs_UI.UserType = user.getType();
-                        EnrollStudent.UserType=user.getType();
-                        Add_Students.UserType=user.getType();
-                        GenerateReport.UserType=user.getType();
-                                
+                        EnrollStudent.UserType = user.getType();
+                        Add_Students.UserType = user.getType();
+                        GenerateReport.UserType = user.getType();
+
                         adminGUI.setVisible(true);
                         this.dispose();
 

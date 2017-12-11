@@ -5,6 +5,7 @@
  */
 package FrontEndUI;
 
+import static FrontEndUI.GenerateReport.UserType;
 import Models.Attendence;
 import ServiceLayer.ManualStudentAttendenceService;
 import java.text.SimpleDateFormat;
@@ -94,6 +95,11 @@ public class ManualStudentAttendenceUI extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton4.setText("BACK");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -184,6 +190,19 @@ public class ManualStudentAttendenceUI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (UserType.equals("Admin")) {
+            Admin admin = new Admin();
+            admin.setVisible(true);
+            this.dispose();
+        }
+        if (UserType.equals("Student Affairs")) {
+            Student_Affairs_UI adminGUI = new Student_Affairs_UI();
+            adminGUI.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

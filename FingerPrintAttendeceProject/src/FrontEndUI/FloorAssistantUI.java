@@ -5,6 +5,7 @@
  */
 package FrontEndUI;
 
+import static FrontEndUI.GenerateReport.UserType;
 import Shared.UploadTask;
 import ServiceLayer.StoredAttendenceFileService;
 import java.awt.Color;
@@ -368,9 +369,16 @@ public class FloorAssistantUI extends javax.swing.JFrame implements PropertyChan
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Login s = new Login();
-        s.setVisible(true);
-        this.dispose();
+        if (UserType.equals("Admin")) {
+            Admin admin = new Admin();
+            admin.setVisible(true);
+            this.dispose();
+        }
+        if (UserType.equals("Floor Assistant")) {
+            Login adminGUI = new Login();
+            adminGUI.setVisible(true);
+            this.dispose();
+        } 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
