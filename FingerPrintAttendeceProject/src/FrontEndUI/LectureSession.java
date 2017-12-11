@@ -60,7 +60,7 @@ public class LectureSession extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtWDSDate = new com.toedter.calendar.JDateChooser();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Manage Lectures");
 
         jPanel1.setBackground(new java.awt.Color(176, 222, 255));
