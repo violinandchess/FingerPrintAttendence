@@ -1,0 +1,12 @@
+
+ prop.setProperty("url", "jdbc:mysql://128.199.78.153:3306/");
+
+   prop.setProperty("dbName", "Attendence_System_DB");
+
+   prop.setProperty("driver", "com.mysql.jdbc.Driver");
+
+   prop.setProperty("userName", "computinguser");
+
+   prop.setProperty("password", "123");
+
+  
