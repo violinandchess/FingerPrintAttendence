@@ -57,6 +57,7 @@ public class ManageSubject_UI extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Manage Subjects");
 
         jPanel1.setBackground(new java.awt.Color(176, 222, 255));
 

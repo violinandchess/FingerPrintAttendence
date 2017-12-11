@@ -61,6 +61,8 @@ public class EnrollStudent extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Enroll Students");
+        setAlwaysOnTop(true);
 
         jPanel1.setBackground(new java.awt.Color(176, 222, 255));
 

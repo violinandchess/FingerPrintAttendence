@@ -84,6 +84,7 @@ public class ManageUser extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Manage Users");
 
         jPanel1.setBackground(new java.awt.Color(176, 222, 255));
 

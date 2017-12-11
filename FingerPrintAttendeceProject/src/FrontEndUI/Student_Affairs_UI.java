@@ -37,8 +37,10 @@ public class Student_Affairs_UI extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Student Affairs");
 
         jPanel1.setBackground(new java.awt.Color(176, 222, 255));
+        jPanel1.setToolTipText("");
 
         jButton1.setText("Add Students");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

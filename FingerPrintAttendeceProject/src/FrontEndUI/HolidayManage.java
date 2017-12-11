@@ -51,8 +51,10 @@ public class HolidayManage extends javax.swing.JFrame {
         txtEndTime = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ReSchedule Lectures");
 
         jPanel1.setBackground(new java.awt.Color(176, 222, 255));
+        jPanel1.setToolTipText("");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Resheduling Date");
