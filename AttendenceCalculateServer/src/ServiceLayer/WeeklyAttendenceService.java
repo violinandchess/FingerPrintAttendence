@@ -70,7 +70,7 @@ public class WeeklyAttendenceService {
                     if (os.equals("Windows")) {
                         storedFile.setFilePath("C:\\FingerprintFTP\\AttendenceFiles\\");
                     } else if (os.equals("Linux")) {
-                        storedFile.setFilePath("/ftp/ftpattend/AttendenceFiles/");
+                        storedFile.setFilePath("/home/ftpattend/AttendenceFiles/");
                     }
                     storedFiles[i] = storedFile;
                     i++;

@@ -211,8 +211,8 @@ public class CalculateAttendence {
             if (entry != null) {
                 String weekdstring = entry.getWeekDate();
                 Date weekd = new Date();
-                SimpleDateFormat dateonly2 = new SimpleDateFormat("MM/dd/yyyy");
-                SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm");
+                SimpleDateFormat dateonly2 = new SimpleDateFormat("yyy/MM/dd");
+                SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
                 Date time = new Date();
                 try {
                     time = localDateFormat.parse(entry.getWeekTime());
