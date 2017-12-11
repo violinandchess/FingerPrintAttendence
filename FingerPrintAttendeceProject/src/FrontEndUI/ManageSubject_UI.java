@@ -212,7 +212,7 @@ public class ManageSubject_UI extends javax.swing.JFrame {
             SubjectService service = new SubjectService();
             boolean status = service.AddSubject(s);
             if (status) {
-                JOptionPane.showMessageDialog(null, "SucessFully Added a Subject", "Sucessfull", JOptionPane.OK_OPTION);
+                            JOptionPane.showMessageDialog(this, "SuccessFully Enrolled Students", "Successfull", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Something Went Wrong", "Error", JOptionPane.ERROR_MESSAGE);
             }

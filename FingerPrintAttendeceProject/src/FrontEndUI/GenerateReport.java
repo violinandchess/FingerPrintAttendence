@@ -54,7 +54,7 @@ public class GenerateReport extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtDiviceID = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -132,7 +132,7 @@ public class GenerateReport extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(49, 49, 49)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDiviceID, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -177,10 +177,10 @@ public class GenerateReport extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                            .addComponent(txtDiviceID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50))))
+                        .addContainerGap(80, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,7 +209,7 @@ public class GenerateReport extends javax.swing.JFrame {
                 String filereport = "D:/" + UUID.randomUUID().toString() + ".pdf";
                 SessionService service = new SessionService();
                 Session[] sessions = service.GetTotalSessions(txtSubjectCode.getText());
-                int totalsessions = sessions.length/2;
+                int totalsessions = sessions.length / 2;
                 AttendLectureSession attendsession = new AttendLectureSession();
 
                 StudentAffairsService stuservice = new StudentAffairsService();
@@ -306,7 +306,7 @@ public class GenerateReport extends javax.swing.JFrame {
                             for (int vk = 0; vk < report.length; vk++) {
                                 if (report[vk].getStudentID().equals(tempattend.getRegNo())) {
                                     if (tempattend.getAB_P().toLowerCase().equals("present")) {
-                                            report[vk].setAttendencePercentage((report[vk].getAttendencePercentage() + 1));
+                                        report[vk].setAttendencePercentage((report[vk].getAttendencePercentage() + 1));
                                     }
 
                                 }
@@ -432,7 +432,80 @@ public class GenerateReport extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (!txtSubjectCode.getText().isEmpty()) {
+                String filereport = "C:/" + UUID.randomUUID().toString() + ".pdf";
+                SessionService service = new SessionService();
+                Session[] sessions = service.GetTotalSessions(txtSubjectCode.getText());
+                int totalsessions = sessions.length;
+                AttendLectureSession attendsession = new AttendLectureSession();
+
+                StudentAffairsService stuservice = new StudentAffairsService();
+                Student[] registedStudents = stuservice.GetRegisteredStudents(txtSubjectCode.getText());
+                ReportAttendence[] report = new ReportAttendence[registedStudents.length];
+                int v = 0;
+                for (Student tempattend : registedStudents) {
+
+                    ReportAttendence reporttemp = new ReportAttendence();
+                    reporttemp.setName(tempattend.getSName());
+                    reporttemp.setStudentID(tempattend.getRegNO());
+                    report[v] = reporttemp;
+                    v++;
+                }
+                v = 0;
+                for (Session tempsession : sessions) {
+                    AttendLecture[] attendence = attendsession.GetAttendence(tempsession.getSessionID());
+                    if (attendence != null) {
+                        for (AttendLecture tempattend : attendence) {
+                            for (int vk = 0; vk < report.length; vk++) {
+                                if (report[vk].getStudentID().equals(tempattend.getRegNo())) {
+                                    if (tempattend.getAB_P().toLowerCase().equals("present")) {
+                                        report[vk].setAttendencePercentage((report[vk].getAttendencePercentage() + 1));
+                                    }
+
+                                }
+
+                            }
+                        }
+                    } else {
+                        System.out.println("else");
+                    }
+
+                }
+                v = 0;
+                for (ReportAttendence reporta : report) {
+                    report[v].setAttendencePercentage(((report[v].getAttendencePercentage()) / totalsessions) * 100);
+                    v++;
+                }
+                String pdfArray[][] = new String[report.length][3];
+                for (int i = 0; i < report.length; i++) {
+
+                    if (report[i].getStudentID().equals(txtDiviceID.getText())) {
+                        pdfArray[i][0] = report[i].getStudentID();
+                        pdfArray[i][1] = report[i].getName();
+                        pdfArray[i][2] = Math.round(report[i].getAttendencePercentage()) / 100.0 + " %";
+
+                    }
+
+                }
+                createSamplePDF(new String[]{"Student ID", "Student Name", "Attendence(percentage)"}, pdfArray, filereport);
+                try {
+
+                    File file = new File(filereport);
+                    Desktop.getDesktop().open(file);
+
+                } catch (IOException exception) {
+
+                }
+                int x = 0;
+            } else {
+                JOptionPane.showMessageDialog(null, "Please Enter Subject code", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+
+            System.out.println("exm2" + ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
     public static void createSamplePDF(String header[], String body[][], String filename) throws Exception {
         Document documento = new Document();
@@ -515,7 +588,7 @@ public class GenerateReport extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtDiviceID;
     private javax.swing.JTextField txtSubjectCode;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,6 +10,7 @@ import ServiceLayer.LoginService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,10 +24,12 @@ public class Login extends javax.swing.JFrame {
     private ImageIcon img = new ImageIcon("D:\\FingerPrintAttendence\\FingerPrintAttendence\\FingerPrintAttendeceProject\\src\\Resources\\attendance-icon.png");
 
     public Login() {
+        
         System.out.println(getClass().getClassLoader().getResource("logging.properties"));
         this.loginSerivice = new LoginService();
 
         initComponents();
+     
         this.setLocationRelativeTo(null);
     }
 
@@ -164,9 +167,9 @@ public class Login extends javax.swing.JFrame {
                 LOGGER.log(Level.SEVERE, "LoginException", ex.getMessage());
             }
         } else {
-            
-            JOptionPane.showMessageDialog(null,"Invalid Login Credentials", "Error",JOptionPane.ERROR_MESSAGE);
-            LOGGER.log(Level.INFO, "Login_Credential_Exception", "Invalid_Login_Credentials"); 
+
+            JOptionPane.showMessageDialog(null, "Invalid Login Credentials", "Error", JOptionPane.ERROR_MESSAGE);
+            LOGGER.log(Level.INFO, "Login_Credential_Exception", "Invalid_Login_Credentials");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -199,9 +202,11 @@ public class Login extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-
+              
                 new Login().setVisible(true);
+               
             }
         });
     }

@@ -212,7 +212,7 @@ public class EnrollStudent extends javax.swing.JFrame {
                         studentAffirsService.RegisterStudent(student, txtSubjectCode.getText());
                     }
                 }
-            JOptionPane.showMessageDialog(null, "SuccessFully Enrolled Students", "Done", JOptionPane.OK_OPTION); 
+            
             } catch (Exception ioe) {
                 ioe.printStackTrace();
             }

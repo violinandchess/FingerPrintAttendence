@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -96,6 +97,11 @@ public class Student_Affairs_UI extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton4.setText("BACK");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -248,7 +254,7 @@ public class Student_Affairs_UI extends javax.swing.JFrame {
 
             }
             createSamplePDF(new String[]{"Student ID", "Genarated Device ID"}, pdfArray);
-
+            JOptionPane.showMessageDialog(this, "SuccessFully Registered Students", "Successfull", JOptionPane.INFORMATION_MESSAGE);
             btndownloadpdf.setVisible(true);
         } catch (Exception ioe) {
             ioe.printStackTrace();
@@ -263,10 +269,14 @@ public class Student_Affairs_UI extends javax.swing.JFrame {
             Desktop.getDesktop().open(file);
 
         } catch (IOException exception) {
-            
+
         }
 
     }//GEN-LAST:event_btndownloadpdfActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+    }//GEN-LAST:event_jButton4ActionPerformed
     public static void createSamplePDF(String header[], String body[][]) throws Exception {
         Document documento = new Document();
         //Create new File

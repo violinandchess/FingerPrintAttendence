@@ -9,6 +9,7 @@ import Models.Session;
 import ServiceLayer.SessionService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -175,6 +176,13 @@ public class HolidayManage extends javax.swing.JFrame {
         String id=service.GetSessionID(scode, scode);
         session.setSessionID(id);
         boolean x = service.UpdateSession(session);
+        if(x)
+        {
+                        JOptionPane.showMessageDialog(this, "SuccessFully ReScheduled", "Successfull", JOptionPane.INFORMATION_MESSAGE);
+        }else
+        {
+                        JOptionPane.showMessageDialog(this, "Something Went Wrong", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtStartTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStartTimeActionPerformed
