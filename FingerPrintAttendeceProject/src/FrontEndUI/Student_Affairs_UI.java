@@ -44,6 +44,7 @@ public class Student_Affairs_UI extends javax.swing.JFrame {
      */
     public Student_Affairs_UI() {
         initComponents();
+        this.setLocationRelativeTo(null);
         btndownloadpdf.setVisible(false);
     }
 

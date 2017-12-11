@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Vibavi
@@ -24,38 +25,40 @@ public class ManageUser extends javax.swing.JFrame {
      */
     public ManageUser() {
         initComponents();
+        this.setLocationRelativeTo(null);
         viewTable();
     }
-    public void viewTable(){
-        try{
-        UsersService us=new UsersService();
-        ResultSet rs=us.getData();
-        ResultSetMetaData rsmd=rs.getMetaData();
-        DefaultTableModel dtm=new DefaultTableModel();
-       
-        Vector col=new Vector();
-        col.addElement("Username");
-        col.addElement("Type");
-        int cols=rsmd.getColumnCount();
-        dtm.setColumnIdentifiers(col);
-        int r=0;
-        while (rs.next()) {
-             Vector rows=new Vector();
-            for (int j = 1; j <= cols; j++) {
-            //System.out.println(rs.getString(j));
-            rows.addElement(rs.getString(j));
 
+    public void viewTable() {
+        try {
+            UsersService us = new UsersService();
+            ResultSet rs = us.getData();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            DefaultTableModel dtm = new DefaultTableModel();
+
+            Vector col = new Vector();
+            col.addElement("Username");
+            col.addElement("Type");
+            int cols = rsmd.getColumnCount();
+            dtm.setColumnIdentifiers(col);
+            int r = 0;
+            while (rs.next()) {
+                Vector rows = new Vector();
+                for (int j = 1; j <= cols; j++) {
+                    //System.out.println(rs.getString(j));
+                    rows.addElement(rs.getString(j));
+
+                }
+                dtm.addRow(rows);
+                r++;
             }
-            dtm.addRow(rows);
-            r++;
-        }       
-        System.out.println(r);
-        jTable1.setModel(dtm);
-        }
-        catch(SQLException se){
+            System.out.println(r);
+            jTable1.setModel(dtm);
+        } catch (SQLException se) {
             System.out.println(se);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -219,29 +222,27 @@ public class ManageUser extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        User us1=new User();
-        if(jTextField1.getText().isEmpty()){
-            
+        User us1 = new User();
+        if (jTextField1.getText().isEmpty()) {
+
             JOptionPane.showMessageDialog(null, "Username or Password fields empty!", "Error",
-                            JOptionPane.ERROR_MESSAGE);
-        }
-        else{
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
             char[] pass = jPasswordField1.getPassword();
             String passString = new String(pass);
             us1.setUserName(jTextField1.getText());
             us1.setPassword(passString);
             us1.setType(jComboBox1.getSelectedItem().toString());
-            UsersService us1service=new UsersService();
-            boolean response=us1service.AddUser(us1);
-            if(response==true){
+            UsersService us1service = new UsersService();
+            boolean response = us1service.AddUser(us1);
+            if (response == true) {
                 JOptionPane.showMessageDialog(null, "Successfully added to database!", "Alert",
-                            JOptionPane.INFORMATION_MESSAGE);
-            viewTable();    
+                        JOptionPane.INFORMATION_MESSAGE);
+                viewTable();
 
-           }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Unable to add to database!", "Error",
-                            JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.ERROR_MESSAGE);
 
             }
         }

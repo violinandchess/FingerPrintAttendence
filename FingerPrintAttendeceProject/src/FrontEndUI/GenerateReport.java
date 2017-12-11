@@ -37,7 +37,9 @@ public class GenerateReport extends javax.swing.JFrame {
      * Creates new form GenerateReport
      */
     public GenerateReport() {
+
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -16,6 +16,7 @@ public class AdminSessions extends javax.swing.JFrame {
      */
     public AdminSessions() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -34,6 +35,7 @@ public class AdminSessions extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Admin Session Management");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -122,8 +124,8 @@ public class AdminSessions extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsers2ActionPerformed
 
     private void btnUsers3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsers3ActionPerformed
-          
-        LectureSession s=new LectureSession();
+
+        LectureSession s = new LectureSession();
         s.setVisible(true);
     }//GEN-LAST:event_btnUsers3ActionPerformed
 

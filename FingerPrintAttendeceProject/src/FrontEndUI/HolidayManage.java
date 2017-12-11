@@ -22,6 +22,7 @@ public class HolidayManage extends javax.swing.JFrame {
      */
     public HolidayManage() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -162,26 +163,23 @@ public class HolidayManage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         SimpleDateFormat dateonly2 = new SimpleDateFormat("yyyy-MM-dd");
-  
+
         Date SDate = txtResDate.getDate();
         Date EndDate = txtNewDAte.getDate();
         String stime = txtStartTime.getText();
         String endtime = txtEndTime.getText();
         String scode = txtSubCode.getText();
-       
-      
+
         SessionService service = new SessionService();
-        Session session=new Session(scode, stime, endtime, scode);
+        Session session = new Session(scode, stime, endtime, scode);
         session.setStartDate(SDate.toString());
-        String id=service.GetSessionID(scode, scode);
+        String id = service.GetSessionID(scode, scode);
         session.setSessionID(id);
         boolean x = service.UpdateSession(session);
-        if(x)
-        {
-                        JOptionPane.showMessageDialog(this, "SuccessFully ReScheduled", "Successfull", JOptionPane.INFORMATION_MESSAGE);
-        }else
-        {
-                        JOptionPane.showMessageDialog(this, "Something Went Wrong", "Error", JOptionPane.ERROR_MESSAGE);
+        if (x) {
+            JOptionPane.showMessageDialog(this, "SuccessFully ReScheduled", "Successfull", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Something Went Wrong", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

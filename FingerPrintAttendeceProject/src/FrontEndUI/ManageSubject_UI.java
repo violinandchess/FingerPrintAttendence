@@ -23,6 +23,7 @@ public class ManageSubject_UI extends javax.swing.JFrame {
      */
     public ManageSubject_UI() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -196,7 +197,7 @@ public class ManageSubject_UI extends javax.swing.JFrame {
         String intake = txtIntake.getSelectedItem().toString();
         String Semster = txtSemster.getSelectedItem().toString();
         String Name = txtSubName.getText();
-        String year=txtYear.getText();
+        String year = txtYear.getText();
         SimpleDateFormat dateonly2 = new SimpleDateFormat("yyyy-MM-dd");
         if (!SubCode.isEmpty() && !Duration.isEmpty() && !intake.isEmpty()
                 && !Semster.isEmpty() && !Name.isEmpty()) {
@@ -212,7 +213,7 @@ public class ManageSubject_UI extends javax.swing.JFrame {
             SubjectService service = new SubjectService();
             boolean status = service.AddSubject(s);
             if (status) {
-                            JOptionPane.showMessageDialog(this, "SuccessFully Enrolled Students", "Successfull", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "SuccessFully Enrolled Students", "Successfull", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Something Went Wrong", "Error", JOptionPane.ERROR_MESSAGE);
             }

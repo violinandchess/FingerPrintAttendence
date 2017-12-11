@@ -26,6 +26,7 @@ public class LectureSession extends javax.swing.JFrame {
      */
     public LectureSession() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -340,7 +341,7 @@ public class LectureSession extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSubjectCodeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        HolidayManage m=new HolidayManage();
+        HolidayManage m = new HolidayManage();
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
