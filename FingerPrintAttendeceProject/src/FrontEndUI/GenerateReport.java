@@ -5,6 +5,7 @@
  */
 package FrontEndUI;
 
+import static FrontEndUI.EnrollStudent.UserType;
 import Models.AttendLecture;
 import Models.ReportAttendence;
 import Models.Session;
@@ -96,6 +97,11 @@ public class GenerateReport extends javax.swing.JFrame {
         });
 
         jButton4.setText("BACK");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Subject code");
@@ -479,6 +485,19 @@ public class GenerateReport extends javax.swing.JFrame {
             System.out.println("exm2" + ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (UserType.equals("Admin")) {
+            Admin admin = new Admin();
+            admin.setVisible(true);
+            this.dispose();
+        }
+        if (UserType.equals("Student Affairs")) {
+            Student_Affairs_UI adminGUI = new Student_Affairs_UI();
+            adminGUI.setVisible(true);
+            this.dispose();
+        }        //
+    }//GEN-LAST:event_jButton4ActionPerformed
     public static void createSamplePDF(String header[], String body[][], String filename) throws Exception {
         Document documento = new Document();
         //Create new File

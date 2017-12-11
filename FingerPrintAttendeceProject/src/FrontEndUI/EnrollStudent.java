@@ -5,6 +5,7 @@
  */
 package FrontEndUI;
 
+import static FrontEndUI.AdminSessions.UserType;
 import java.util.logging.Logger;
 
 import Models.Student;
@@ -38,6 +39,7 @@ public class EnrollStudent extends javax.swing.JFrame {
     public EnrollStudent() {
         initComponents();
         txtUpload.setEditable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -250,7 +252,16 @@ public class EnrollStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        if (UserType.equals("Admin")) {
+            Admin admin = new Admin();
+            admin.setVisible(true);
+            this.dispose();
+        }
+        if (UserType.equals("Student Affairs")) {
+            Student_Affairs_UI adminGUI = new Student_Affairs_UI();
+            adminGUI.setVisible(true);
+            this.dispose();
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

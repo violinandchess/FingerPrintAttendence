@@ -159,6 +159,10 @@ public class Login extends javax.swing.JFrame {
 
                         Student_Affairs_UI adminGUI = new Student_Affairs_UI();
                         Student_Affairs_UI.UserType = user.getType();
+                        EnrollStudent.UserType=user.getType();
+                        Add_Students.UserType=user.getType();
+                        GenerateReport.UserType=user.getType();
+                                
                         adminGUI.setVisible(true);
                         this.dispose();
 

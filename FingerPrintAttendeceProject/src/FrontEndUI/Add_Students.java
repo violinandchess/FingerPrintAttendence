@@ -5,6 +5,7 @@
  */
 package FrontEndUI;
 
+import static FrontEndUI.EnrollStudent.UserType;
 import Models.Student;
 import ServiceLayer.StudentAffairsService;
 import com.itextpdf.text.BaseColor;
@@ -42,6 +43,8 @@ public class Add_Students extends javax.swing.JFrame {
     /**
      * Creates new form Student_Affairs_UI
      */
+    public static String UserType = "";
+
     public Add_Students() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -280,7 +283,16 @@ public class Add_Students extends javax.swing.JFrame {
     }//GEN-LAST:event_btndownloadpdfActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        if (UserType.equals("Admin")) {
+            Admin admin = new Admin();
+            admin.setVisible(true);
+            this.dispose();
+        }
+        if (UserType.equals("Student Affairs")) {
+            Student_Affairs_UI adminGUI = new Student_Affairs_UI();
+            adminGUI.setVisible(true);
+            this.dispose();
+        }        //
     }//GEN-LAST:event_jButton4ActionPerformed
     public static void createSamplePDF(String header[], String body[][]) throws Exception {
         Document documento = new Document();
