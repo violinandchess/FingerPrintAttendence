@@ -323,6 +323,11 @@ public class LectureSession extends javax.swing.JFrame {
                 c.add(Calendar.WEEK_OF_MONTH, i);
                 Date d = c.getTime();
                 String SessionID = UUID.randomUUID().toString();
+                if(westime.isEmpty() && weetime.isEmpty())
+                {
+                    westime=null;
+                    weetime=null;
+                }
                 Session s = new Session(SessionID, westime, weetime, code);
                 s.setStartDate(dateonly2.format(c.getTime()));
                 s.setBatch("Weekend");

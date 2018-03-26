@@ -28,7 +28,7 @@ public final class DatabaseConnection {
         String url = "jdbc:mysql://172.18.20.210:3306/";
         String dbName = "Attendence_DB";
         String driver = "com.mysql.jdbc.Driver";
-        String userName = "computinguser";
+        String userName = "root";
         String password = "Admin@123";
         try {
             Class.forName(driver).newInstance();

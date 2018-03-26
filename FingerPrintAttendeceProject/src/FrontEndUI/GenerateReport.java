@@ -188,7 +188,7 @@ public class GenerateReport extends javax.swing.JFrame {
                 String filereport = "D:/" + UUID.randomUUID().toString() + ".pdf";
                 SessionService service = new SessionService();
                 Session[] sessions = service.GetTotalSessions(txtSubjectCode.getText());
-                int totalsessions = sessions.length / 2;
+                int totalsessions = sessions.length-1 ;
                 AttendLectureSession attendsession = new AttendLectureSession();
 
                 StudentAffairsService stuservice = new StudentAffairsService();

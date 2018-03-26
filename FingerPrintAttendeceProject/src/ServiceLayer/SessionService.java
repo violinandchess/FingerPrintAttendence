@@ -40,7 +40,7 @@ public class SessionService {
     public Session[] GetTotalSessions(String scode) {
         try {
 
-            ResultSet response = dbConnection.query("select *  from lectureSession   where code='" + scode + "'");
+            ResultSet response = dbConnection.query("select *  from lectureSession   where code='" + scode + "' and WD_WE is not null");
             
             if (response == null) {
                 return null;
