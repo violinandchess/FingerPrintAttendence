@@ -46,12 +46,15 @@ public class CalculateAttendence {
             }
         } else {
             LOGGER.log(Level.INFO, "No_Files_To_Process", "No weekly files uploaded to process");
-       }
+        }
         SimpleDateFormat dateonly = new SimpleDateFormat("yyyy-MM-dd");
         StartDate = dateonly.parse(storedFiles[0].getWeekStartDate());
-        EndDate = dateonly.parse(storedFiles[0].getWeekEndDate());
-       
-        CalculateAbsentPresent(dateonly.format(EndDate.getTime())+1);
+        EndDate = dateonly.parse("2018-01-08");
+        EndDate = dateonly.parse("2018-02-25");
+      //  StartDate = dateonly.parse(storedFiles[0].getWeekStartDate());
+       // EndDate = dateonly.parse(storedFiles[0].getWeekEndDate());
+
+        CalculateAbsentPresent(dateonly.format(EndDate.getTime()) + 1);
     }
 
     private static void GenarateWeeklyAttendenceFromRAWVersion2(StoredAttendenceFile file) {
